@@ -1,2 +1,2 @@
 # Rennovaconecta
-x
+RenovaConecta es una plataforma web diseñada para conectar a propietarios, arquitectos, diseñadores y proveedores de materiales en un solo ecosistema digital, facilitando la gestión de proyectos de remodelación en Barranquilla. Este proyecto presenta una interfaz moderna y responsive desarrollada en HTML, CSS y JavaScript, que permite publicar proyectos, explorar profesionales, comparar proveedores y solicitar cotizaciones de forma rápida, clara y segura, mejorando la experiencia del usuario en todo el proceso de renovación del hogar.
