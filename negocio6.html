@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RenovaConecta | Remodelaciones en Barranquilla</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Variables originales intactas ──────────────── */
+        :root {
+            --azul-confianza: #1A365D;
+            --azul-suave:     #2C5282;
+            --blanco-puro:    #FFFFFF;
+            --gris-claro:     #F7FAFC;
+            --vino-tinto:     #801919;
+            --vino-hover:     #631313;
+            --texto-oscuro:   #2D3748;
+            --texto-suave:    #718096;
+            --oro-estrellas:  #ECC94B;
+            --shadow:         0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-hover:   0 16px 40px rgba(0,0,0,0.14);
+            --transition:     all 0.3s ease;
+            --radius-sm:  8px;
+            --radius-md:  14px;
+            --azul-claro: #EBF4FF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--texto-oscuro);
+            background-color: var(--blanco-puro);
+            overflow-x: hidden;
+        }
+
+        /* ── Utilidades ─────────────────────────────────── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 30px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.93rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.02em;
+        }
+        .btn-primary { background-color: var(--vino-tinto); color: white; }
+        .btn-primary:hover { background-color: var(--vino-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(128,25,25,0.3); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--azul-confianza); color: var(--azul-confianza); }
+        .btn-outline:hover { background-color: var(--azul-confianza); color: white; transform: translateY(-2px); }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--vino-tinto);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Lora', serif;
+            text-align: center;
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            margin-bottom: 1rem;
+            color: var(--azul-confianza);
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--texto-suave);
+            max-width: 640px;
+            margin: 0 auto 3.2rem;
+            font-size: 1rem;
+        }
+
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--vino-tinto);
+            border-radius: 2px;
+            margin: 0.75rem auto 2.8rem;
+        }
+
+        /* ── HEADER ──────────────────────────────────────── */
+        header {
+            background-color: var(--azul-confianza);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 24px rgba(26,54,93,0.35);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            color: white;
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .logo-dot { color: var(--oro-estrellas); }
+
+        .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+        .nav-links a {
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 3px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--oro-estrellas);
+            transition: var(--transition);
+            border-radius: 1px;
+        }
+        .nav-links a:hover { color: white; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ── HERO ────────────────────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, rgba(26,54,93,0.90) 0%, rgba(44,82,130,0.75) 100%),
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920') center/cover;
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(to top, var(--gris-claro), transparent);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text .section-label { color: var(--oro-estrellas); }
+
+        .hero-text h1 {
+            font-family: 'Lora', serif;
+            font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+            margin-bottom: 1.2rem;
+            line-height: 1.18;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 1.08rem;
+            opacity: 0.88;
+            line-height: 1.8;
+            max-width: 520px;
+        }
+
+        /* Panel derecho */
+        .hero-side {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .hero-btns { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+        .hero-btns .btn { text-align: center; }
+        .hero-btns .btn-outline { color: white; border-color: rgba(255,255,255,0.55); }
+        .hero-btns .btn-outline:hover { background-color: rgba(255,255,255,0.15); color: white; transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.18);
+        }
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .hero-stat-num {
+            font-family: 'Lora', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--oro-estrellas);
+            line-height: 1;
+            min-width: 60px;
+        }
+        .hero-stat-label { font-size: 0.82rem; opacity: 0.78; line-height: 1.3; }
+
+        @media (max-width: 860px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .hero-side { max-width: 400px; }
+            .hero-btns { flex-direction: row; }
+            .hero-stats { flex-direction: row; flex-wrap: wrap; }
+            .hero-stat { flex: 1; min-width: 100px; }
+        }
+
+        /* ── SECCIONES BASE ──────────────────────────────── */
+        .sec-gray  { padding: 96px 0; background-color: var(--gris-claro); }
+        .sec-white { padding: 96px 0; background-color: var(--blanco-puro); }
+
+        /* ── STEPS ───────────────────────────────────────── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 40px 28px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            border: 1px solid #E2E8F0;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--vino-tinto), var(--azul-suave));
+        }
+        .step-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--vino-tinto), var(--vino-hover));
+            color: white;
+            width: 54px; height: 54px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 16px rgba(128,25,25,0.28);
+        }
+
+        .step-card h3 {
+            font-family: 'Lora', serif;
+            color: var(--azul-confianza);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* ── CARDS ───────────────────────────────────────── */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 26px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #E2E8F0;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+
+        .card-img {
+            height: 210px;
+            background-color: #ddd;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body { padding: 24px; }
+        .card-body h3 {
+            font-family: 'Lora', serif;
+            margin-bottom: 8px;
+            color: var(--azul-confianza);
+            font-size: 1.07rem;
+        }
+        .card-body p { color: var(--texto-suave); font-size: 0.94rem; }
+
+        /* ── BADGE ───────────────────────────────────────── */
+        .badge {
+            display: inline-block;
+            background: var(--azul-claro);
+            color: var(--azul-suave);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 10px;
+            border: 1px solid #BEE3F8;
+        }
+
+        /* ── PROFESIONALES ───────────────────────────────── */
+        .pros-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+        .pros-bottom {
+            display: flex;
+            justify-content: center;
+            margin-top: 26px;
+        }
+        .pros-bottom .card {
+            width: calc(33.333% - 9px);
+        }
+
+        .pro-exp {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--texto-suave);
+            margin: 8px 0 16px;
+        }
+        .pro-exp strong { color: var(--azul-confianza); }
+
+        /* ── PROVEEDORES ─────────────────────────────────── */
+        .supplier-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+        /* ── COSTOS ──────────────────────────────────────── */
+        .cost-card { border-top: 4px solid var(--vino-tinto); }
+        .cost-card .card-body { padding: 28px; }
+        .cost-card h3 {
+            font-family: 'Lora', serif;
+            color: var(--azul-confianza);
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+        }
+
+        .price-list { list-style: none; margin: 0 0 20px; }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #EDF2F7;
+            font-size: 0.93rem;
+        }
+        .price-item:last-child { border-bottom: none; }
+        .price-item span:first-child { color: var(--texto-suave); }
+        .price-value { font-weight: 700; color: var(--vino-tinto); }
+
+        /* ── TESTIMONIOS ─────────────────────────────────── */
+        .testimonial-card {
+            padding: 32px 28px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: 'Lora', serif;
+            font-size: 4.5rem;
+            color: var(--vino-tinto);
+            opacity: 0.10;
+            position: absolute;
+            top: 12px; left: 22px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .stars { color: var(--oro-estrellas); margin-bottom: 12px; font-size: 1rem; letter-spacing: 2px; }
+
+        .testimonial-card > p {
+            font-style: italic;
+            color: var(--texto-oscuro);
+            font-size: 0.95rem;
+            line-height: 1.78;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #EDF2F7;
+        }
+
+        .client-img {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #E2E8F0;
+            background-color: #ddd;
+        }
+        .client-profile strong { font-size: 0.94rem; color: var(--azul-confianza); }
+        .client-profile small { color: var(--texto-suave); font-size: 0.8rem; }
+
+        /* ── CTA ─────────────────────────────────────────── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--azul-confianza) 0%, var(--azul-suave) 100%);
+            color: white;
+            padding: 96px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 380px; height: 380px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
+        }
+        .cta-section h2 {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+        .cta-section p { opacity: 0.85; margin-bottom: 2.5rem; }
+        .hero-btns.center { justify-content: center; }
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer {
+            background: #1A202C;
+            color: white;
+            padding: 64px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 44px;
+        }
+
+        .footer-logo {
+            font-family: 'Lora', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .footer-links h4 {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #CBD5E0;
+            margin-bottom: 18px;
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #A0AEC0; text-decoration: none; font-size: 0.92rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--oro-estrellas); }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2D3748;
+            color: #718096;
+            font-size: 0.87rem;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 900px) {
+            .pros-top { grid-template-columns: repeat(2, 1fr); }
+            .pros-bottom .card { width: calc(50% - 13px); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-btns { flex-direction: column; }
+            .hero-stats { gap: 22px; flex-wrap: wrap; }
+        }
+        @media (max-width: 560px) {
+            .pros-top { grid-template-columns: 1fr; }
+            .pros-bottom .card { width: 100%; }
+        }
+
+        /* ── SPA VISTAS ──────────────────────────────────── */
+        .vista { display: none; }
+        .vista.activa { display: block; }
+
+        /* Transición suave entre vistas */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .vista.activa { animation: fadeIn 0.35s ease; }
+
+        /* ── VISTA PERFIL ────────────────────────────────── */
+        .perfil-hero {
+            background: linear-gradient(135deg, var(--azul-confianza) 0%, var(--azul-suave) 100%);
+            padding: 72px 0 56px;
+            color: white;
+        }
+        .perfil-inner {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .perfil-avatar {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.25);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+        }
+        .perfil-info h1 {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+        .perfil-especialidad {
+            font-size: 1rem;
+            opacity: 0.82;
+            margin-bottom: 18px;
+        }
+        .perfil-desc {
+            font-size: 0.97rem;
+            opacity: 0.88;
+            line-height: 1.8;
+            max-width: 580px;
+            margin-bottom: 24px;
+        }
+        .perfil-exp-badge {
+            display: inline-block;
+            background: rgba(236,201,75,0.18);
+            border: 1px solid rgba(236,201,75,0.45);
+            color: var(--oro-estrellas);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+        .perfil-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        .perfil-body { padding: 72px 0; background: var(--gris-claro); }
+
+        .perfil-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .perfil-section-title {
+            font-family: 'Lora', serif;
+            color: var(--azul-confianza);
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        .proyectos-tabs { margin-bottom: 28px; }
+        .proyectos-tabs-nav {
+            display: flex;
+            gap: 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 10px 12px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--texto-suave);
+            transition: var(--transition);
+            text-align: center;
+            border-right: 1px solid #E2E8F0;
+        }
+        .tab-btn:last-child { border-right: none; }
+        .tab-btn.activo { background: var(--azul-confianza); color: white; }
+        .tab-btn:hover:not(.activo) { background: var(--azul-claro); color: var(--azul-confianza); }
+
+        .tab-contenido { display: none; }
+        .tab-contenido.activo { display: block; }
+
+        .proyecto-item {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border: 1px solid #E2E8F0;
+            border-left: 4px solid var(--vino-tinto);
+        }
+        .proyecto-item h4 {
+            font-family: 'Lora', serif;
+            color: var(--azul-confianza);
+            font-size: 0.97rem;
+            margin-bottom: 4px;
+        }
+        .proyecto-item p { color: var(--texto-suave); font-size: 0.87rem; margin: 0; }
+
+        .habilidades-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+        .habilidades-lista li {
+            background: var(--azul-claro);
+            color: var(--azul-suave);
+            border: 1px solid #BEE3F8;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .perfil-inner { grid-template-columns: 1fr; }
+            .perfil-avatar { max-width: 220px; }
+            .perfil-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── VISTA COTIZACIÓN ────────────────────────────── */
+        .cotizacion-hero {
+            background: linear-gradient(135deg, var(--vino-tinto) 0%, #a02020 100%);
+            padding: 56px 0 48px;
+            color: white;
+            text-align: center;
+        }
+        .cotizacion-hero h1 {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 10px;
+        }
+        .cotizacion-hero p { opacity: 0.85; font-size: 1rem; }
+
+        .cotizacion-body { padding: 72px 0; background: var(--gris-claro); }
+
+        .cotizacion-card {
+            max-width: 720px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-hover);
+            padding: 48px 44px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--azul-confianza);
+            letter-spacing: 0.02em;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 11px 16px;
+            border: 1.5px solid #E2E8F0;
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.93rem;
+            color: var(--texto-oscuro);
+            transition: var(--transition);
+            outline: none;
+            background: var(--gris-claro);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--azul-suave);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44,82,130,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+
+        .form-submit { margin-top: 28px; text-align: center; }
+        .form-submit .btn { padding: 14px 48px; font-size: 1rem; }
+
+        .alerta-exito {
+            display: none;
+            background: #F0FFF4;
+            border: 1.5px solid #68D391;
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin-top: 24px;
+            text-align: center;
+            color: #276749;
+            font-weight: 600;
+        }
+        .alerta-exito .alerta-icon { font-size: 2rem; margin-bottom: 6px; }
+
+        @media (max-width: 560px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .cotizacion-card { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">RenovaConecta<span class="logo-dot">.</span></div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                    <li><a href="#profesionales">Profesionales</a></li>
+                    <li><a href="#proveedores">Proveedores</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary">Publicar Proyecto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ══ SPA WRAPPER ══════════════════════════════════════ -->
+
+    <!-- VISTA HOME -->
+    <div id="vista-home" class="vista activa">
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="inicio">
+            <div class="container">
+                <div class="hero-inner">
+                    <!-- Columna izquierda: texto -->
+                    <div class="hero-text">
+                        <span class="section-label">Barranquilla, Colombia</span>
+                        <h1>Remodelar tu hogar en Barranquilla nunca fue tan fácil</h1>
+                        <p>Conecta con arquitectos, diseñadores y proveedores de materiales en un solo lugar. Gestiona tu proyecto de remodelación de forma clara, rápida y segura.</p>
+                    </div>
+                    <!-- Columna derecha: acciones + estadísticas -->
+                    <div class="hero-side">
+                        <div class="hero-btns">
+                            <a href="#" class="btn btn-primary">Publicar Proyecto</a>
+                            <a href="#" class="btn btn-outline">Buscar Profesionales</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="hero-stat-num">+350</div>
+                                <div class="hero-stat-label">Proyectos completados</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-num">+80</div>
+                                <div class="hero-stat-label">Profesionales activos</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-num">4.9★</div>
+                                <div class="hero-stat-label">Calificación promedio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CÓMO FUNCIONA -->
+        <section class="sec-gray" id="como-funciona">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">El proceso</span>
+                <h2 class="section-title">¿Cómo funciona?</h2>
+                <div class="section-divider"></div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Publica tu proyecto</h3>
+                        <p>Describe tu remodelación, presupuesto aproximado y ubicación en la ciudad.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Recibe propuestas</h3>
+                        <p>Arquitectos y proveedores te enviarán cotizaciones personalizadas según tus necesidades.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Ejecuta y gestiona</h3>
+                        <p>Haz seguimiento del progreso de tu obra y pagos de forma 100% digital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section class="sec-white">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">Lo que ofrecemos</span>
+                <h2 class="section-title">Servicios para Propietarios</h2>
+                <div class="section-divider"></div>
+                <div class="grid-layout">
+                    <article class="card">
+                        <img src="cocina.jpg" alt="Cocinas" class="card-img">
+                        <div class="card-body">
+                            <h3>Remodelación de Cocinas</h3>
+                            <p>Transformamos el corazón de tu hogar con diseños modernos y funcionales.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="baño.jpg" alt="Baños" class="card-img">
+                        <div class="card-body">
+                            <h3>Remodelación de Baños</h3>
+                            <p>Creación de espacios de relajación con materiales de alta gama.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="sala.jpg" alt="Interiores" class="card-img">
+                        <div class="card-body">
+                            <h3>Diseño de Interiores</h3>
+                            <p>Asesoría profesional para armonizar cada rincón de tu casa.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFESIONALES DESTACADOS -->
+        <section class="sec-gray" id="profesionales">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">Nuestro equipo</span>
+                <h2 class="section-title">Profesionales Destacados</h2>
+                <div class="section-divider"></div>
+
+                <!-- Fila 1: tres profesionales -->
+                <div class="pros-top">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="badge">Arquitecto</span>
+                            <h3>Arq. Carlos Rodríguez</h3>
+                            <p>Experto en diseño bioclimático y estructuras modernas.</p>
+                            <span class="pro-exp"><strong>Experiencia:</strong> 12 años</span>
+                            <a href="#" class="btn btn-outline" style="width:100%;text-align:center;">Ver Perfil</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="badge">Interiorista</span>
+                            <h3>Elena Gómez</h3>
+                            <p>Especialista en acabados de lujo y optimización de espacios.</p>
+                            <span class="pro-exp"><strong>Experiencia:</strong> 8 años</span>
+                            <a href="#" class="btn btn-outline" style="width:100%;text-align:center;">Ver Perfil</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="badge">Maestro de Obra</span>
+                            <h3>Ricardo Méndez</h3>
+                            <p>Especialista en acabados finos, mampostería y redes hidrosanitarias.</p>
+                            <span class="pro-exp"><strong>Experiencia:</strong> 20 años</span>
+                            <a href="#" class="btn btn-outline" style="width:100%;text-align:center;">Ver Perfil</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila 2: Andrés Villa centrado -->
+                <div class="pros-bottom">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="badge">Especialista en Domótica</span>
+                            <h3>Andrés Villa</h3>
+                            <p>Integrador de sistemas inteligentes, seguridad y automatización de hogares.</p>
+                            <span class="pro-exp"><strong>Experiencia:</strong> 6 años</span>
+                            <a href="#" class="btn btn-outline" style="width:100%;text-align:center;">Ver Perfil</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROVEEDORES -->
+        <section class="sec-white" id="proveedores">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">Materiales</span>
+                <h2 class="section-title">Proveedores de Materiales</h2>
+                <div class="section-divider"></div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="supplier-icon">🏺</span>
+                            <h3>Cerámicas del Caribe</h3>
+                            <p>Pisos, porcelanatos y revestimientos importados.</p>
+                            <a href="#" class="btn btn-primary" style="margin-top:16px;">Ver Catálogo</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="supplier-icon">💡</span>
+                            <h3>Luz y Estilo BQ</h3>
+                            <p>Iluminación LED y sistemas de domótica residencial.</p>
+                            <a href="#" class="btn btn-primary" style="margin-top:16px;">Ver Catálogo</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="supplier-icon">🪵</span>
+                            <h3>Madera &amp; Diseño Real</h3>
+                            <p>Carpintería arquitectónica, clósets y mobiliario de cocina a medida.</p>
+                            <a href="#" class="btn btn-primary" style="margin-top:16px;">Ver Catálogo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS RECIENTES -->
+        <section class="sec-gray" id="proyectos">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">Portafolio</span>
+                <h2 class="section-title">Proyectos Recientes</h2>
+                <div class="section-divider"></div>
+                <div class="grid-layout">
+                    <article class="card">
+                        <img src="apartamento2.jpg" alt="Apartamento Alto Prado" class="card-img">
+                        <div class="card-body">
+                            <h3>Apto en Alto Prado</h3>
+                            <p>Remodelación integral de 120m² con acabados minimalistas.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="cocina1.jpg" alt="Cocina Villa Carolina" class="card-img">
+                        <div class="card-body">
+                            <h3>Cocina en Villa Carolina</h3>
+                            <p>Renovación total de red hidráulica y mobiliario moderno.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="apartamento1.jpg" alt="Sala Riomar" class="card-img">
+                        <div class="card-body">
+                            <h3>Sala en Riomar</h3>
+                            <p>Rediseño de iluminación y techos en drywall.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- COSTOS -->
+        <section class="sec-white">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">Presupuesto</span>
+                <h2 class="section-title">Calcula el costo de tu remodelación</h2>
+                <p class="section-subtitle">Obtén una estimación rápida del presupuesto para tu proyecto en Barranquilla.</p>
+                <div class="grid-layout">
+                    <div class="card cost-card">
+                        <div class="card-body">
+                            <h3>Cocina</h3>
+                            <ul class="price-list">
+                                <li class="price-item"><span>Básica</span> <span class="price-value">$2M - $5M</span></li>
+                                <li class="price-item"><span>Intermedia</span> <span class="price-value">$15M - $30M</span></li>
+                                <li class="price-item"><span>Completa</span> <span class="price-value">Desde $50M</span></li>
+                            </ul>
+                            <a href="#" class="btn btn-primary" style="width:100%;text-align:center;" onclick="event.preventDefault();mostrarCotizacionProyecto('cocina')">Solicitar cotización</a>
+                        </div>
+                    </div>
+                    <div class="card cost-card">
+                        <div class="card-body">
+                            <h3>Baño</h3>
+                            <ul class="price-list">
+                                <li class="price-item"><span>Básica</span> <span class="price-value">$8M - $12M</span></li>
+                                <li class="price-item"><span>Media</span> <span class="price-value">$12M - $25M</span></li>
+                                <li class="price-item"><span>Premium</span> <span class="price-value">$25M - $40M</span></li>
+                            </ul>
+                            <a href="#" class="btn btn-primary" style="width:100%;text-align:center;" onclick="event.preventDefault();mostrarCotizacionProyecto('baño')">Solicitar cotización</a>
+                        </div>
+                    </div>
+                    <div class="card cost-card">
+                        <div class="card-body">
+                            <h3>Apartamento</h3>
+                            <ul class="price-list">
+                                <li class="price-item"><span>Parcial</span> <span class="price-value">$15M - $40M</span></li>
+                                <li class="price-item"><span>Integral</span> <span class="price-value">$50M - $120M</span></li>
+                                <li class="price-item"><span>Por m²</span> <span class="price-value">$2.5M - $5M</span></li>
+                            </ul>
+                            <a href="#" class="btn btn-primary" style="width:100%;text-align:center;" onclick="event.preventDefault();mostrarCotizacionProyecto('apartamento')">Solicitar cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS -->
+        <section class="sec-gray">
+            <div class="container">
+                <span class="section-label" style="display:block;text-align:center;">Testimonios</span>
+                <h2 class="section-title">Historias de remodelación</h2>
+                <p class="section-subtitle">Propietarios que ya transformaron sus hogares con RenovaConecta.</p>
+                <div class="grid-layout">
+                    <article class="card testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Publicamos nuestro proyecto de remodelación de cocina y en menos de una semana recibimos tres propuestas de arquitectos. Terminamos el proyecto en dos meses."</p>
+                        <div class="client-profile">
+                            <img src="maria.jpg" alt="María González" class="client-img">
+                            <div>
+                                <strong>María González</strong><br>
+                                <small>Barrio Riomar</small>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"La plataforma nos ayudó a comparar proveedores de cerámica y ahorrar casi un 20% en materiales. El proceso fue transparente y seguro."</p>
+                        <div class="client-profile">
+                            <img src="carlos.png" alt="Carlos Herrera" class="client-img">
+                            <div>
+                                <strong>Carlos Herrera</strong><br>
+                                <small>Villa Carolina</small>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Lo mejor fue poder ver proyectos anteriores de los arquitectos antes de contratarlos. Mi remodelación en Alto Prado quedó espectacular."</p>
+                        <div class="client-profile">
+                            <img src="laura.jpg" alt="Laura Martínez" class="client-img">
+                            <div>
+                                <strong>Laura Martínez</strong><br>
+                                <small>Alto Prado</small>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    </div><!-- /vista-home -->
+
+    <!-- VISTA PERFIL -->
+    <div id="vista-perfil" class="vista">
+        <div class="perfil-hero" id="perfil-hero-bg">
+            <div class="container">
+                <div class="perfil-inner">
+                    <img id="perfil-avatar" src="" alt="" class="perfil-avatar">
+                    <div class="perfil-info">
+                        <span class="section-label" id="perfil-especialidad-badge" style="color:var(--oro-estrellas);"></span>
+                        <h1 id="perfil-nombre"></h1>
+                        <p class="perfil-especialidad" id="perfil-rol"></p>
+                        <span class="perfil-exp-badge" id="perfil-exp"></span>
+                        <p class="perfil-desc" id="perfil-desc"></p>
+                        <div class="perfil-btns">
+                            <button id="btn-cotizar-perfil" onclick="mostrarCotizacionProfesional(contextoCotizacion._perfilNombre, contextoCotizacion._perfilEspecialidad)" class="btn btn-primary">Cotizar con este profesional</button>
+                            <button onclick="mostrarHome()" class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.55);">← Volver al inicio</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="perfil-body">
+            <div class="container">
+                <div class="perfil-grid">
+                    <!-- Columna izquierda: proyectos -->
+                    <div>
+                        <h3 class="perfil-section-title">Proyectos</h3>
+                        <div class="proyectos-tabs">
+                            <div class="proyectos-tabs-nav">
+                                <button class="tab-btn activo" onclick="cambiarTab('internacionales', this)">🌎 Internacionales</button>
+                                <button class="tab-btn" onclick="cambiarTab('colombia', this)">🇨🇴 Colombia</button>
+                                <button class="tab-btn" onclick="cambiarTab('barranquilla', this)">🏙️ Barranquilla</button>
+                            </div>
+                            <div id="tab-internacionales" class="tab-contenido activo">
+                                <div id="proyectos-internacionales"></div>
+                            </div>
+                            <div id="tab-colombia" class="tab-contenido">
+                                <div id="proyectos-colombia"></div>
+                            </div>
+                            <div id="tab-barranquilla" class="tab-contenido">
+                                <div id="proyectos-barranquilla"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Columna derecha: habilidades -->
+                    <div>
+                        <h3 class="perfil-section-title">Habilidades</h3>
+                        <ul class="habilidades-lista" id="perfil-habilidades"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /vista-perfil -->
+
+    <!-- VISTA COTIZACIÓN -->
+    <div id="vista-cotizacion" class="vista">
+        <div class="cotizacion-hero">
+            <div class="container">
+                <span class="section-label" style="color:var(--oro-estrellas);">Presupuesto</span>
+                <h1 id="cotizacion-titulo">Solicitar Cotización</h1>
+                <p id="cotizacion-subtitulo">Completa el formulario y recibe propuestas de nuestros profesionales en menos de 24 horas.</p>
+            </div>
+        </div>
+        <div class="cotizacion-body">
+            <div class="container">
+                <div class="cotizacion-card">
+                    <!-- Bloque de contexto dinámico -->
+                    <div id="f-contexto-bloque" style="display:none;margin-bottom:24px;padding:16px 20px;border-radius:8px;background:var(--azul-claro);border:1px solid #BEE3F8;">
+                        <div id="f-contexto-profesional" style="display:none;">
+                            <p style="margin:0;font-size:0.88rem;color:var(--azul-suave);font-weight:600;margin-bottom:4px;">👤 Profesional seleccionado</p>
+                            <p id="f-ctx-nombre" style="margin:0;font-size:0.97rem;font-weight:700;color:var(--azul-confianza);"></p>
+                            <p id="f-ctx-especialidad" style="margin:0;font-size:0.85rem;color:var(--texto-suave);"></p>
+                        </div>
+                        <div id="f-contexto-proyecto" style="display:none;">
+                            <p style="margin:0;font-size:0.88rem;color:var(--azul-suave);font-weight:600;margin-bottom:4px;">🏠 Tipo de remodelación</p>
+                            <p id="f-ctx-tipo" style="margin:0;font-size:0.97rem;font-weight:700;color:var(--azul-confianza);text-transform:capitalize;"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="f-nombre">Nombre *</label>
+                            <input type="text" id="f-nombre" placeholder="Ej. Sofía">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-apellido">Apellido *</label>
+                            <input type="text" id="f-apellido" placeholder="Ej. Martínez">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-telefono">Teléfono *</label>
+                            <input type="tel" id="f-telefono" placeholder="+57 300 000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-correo">Correo electrónico *</label>
+                            <input type="email" id="f-correo" placeholder="tu@correo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="f-tipo">Tipo de proyecto *</label>
+                            <select id="f-tipo">
+                                <option value="">Selecciona...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-presupuesto">Presupuesto estimado *</label>
+                            <select id="f-presupuesto">
+                                <option value="">Selecciona...</option>
+                                <option>Menos de $5M COP</option>
+                                <option>$5M - $15M COP</option>
+                                <option>$15M - $30M COP</option>
+                                <option>$30M - $60M COP</option>
+                                <option>$60M - $100M COP</option>
+                                <option>Más de $100M COP</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label for="f-desc">Descripción del proyecto *</label>
+                            <textarea id="f-desc" placeholder="Cuéntanos los detalles de tu proyecto: espacios a remodelar, estilo deseado, plazo estimado..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <button onclick="enviarCotizacion()" class="btn btn-primary">Enviar solicitud →</button>
+                        <br><br>
+                        <button onclick="mostrarHome()" class="btn btn-outline">← Volver al inicio</button>
+                    </div>
+                    <div class="alerta-exito" id="alerta-exito">
+                        <div class="alerta-icon">✅</div>
+                        <strong>¡Solicitud enviada con éxito!</strong><br>
+                        Nuestros profesionales se pondrán en contacto contigo en menos de 24 horas.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /vista-cotizacion -->
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">RenovaConecta<span class="logo-dot">.</span></div>
+                    <p style="color:#A0AEC0;font-size:0.91rem;line-height:1.7;">Transformando hogares en La Arenosa con tecnología y confianza.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Plataforma</h4>
+                    <ul>
+                        <li><a href="#">Profesionales</a></li>
+                        <li><a href="#">Proveedores</a></li>
+                        <li><a href="#">Proyectos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <p style="color:#A0AEC0;font-size:0.92rem;margin-bottom:6px;">Barranquilla, Colombia</p>
+                    <p><a href="/cdn-cgi/l/email-protection#4d2522212c0d3f2823223b2c2e2223282e392c632e22" style="color:var(--oro-estrellas);text-decoration:none;font-size:0.92rem;"><span class="__cf_email__" data-cfemail="355d5a59547547505b5a4354565a5b505641541b565a">[email&#160;protected]</span></a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 RenovaConecta. Todos los derechos reservados. Barranquilla, Colombia.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══ SPA JAVASCRIPT ═══════════════════════════════════ -->
+    <script>
+    /* ── DATA PROFESIONALES ─────────────────────────────── */
+    const profesionales = {
+        0: {
+            nombre: 'Arq. Carlos Rodríguez',
+            especialidad: 'Arquitecto',
+            rol: 'Experto en Diseño Bioclimático y Estructuras Modernas',
+            experiencia: '12 años de experiencia',
+            imagen: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600',
+            descripcion: 'Carlos es un arquitecto con sólida formación en diseño bioclimático y estructuras contemporáneas. Ha liderado proyectos residenciales y comerciales a lo largo de Colombia y el exterior, integrando siempre criterios de sostenibilidad, eficiencia energética y estética. Su metodología combina tecnología BIM con un enfoque humano centrado en el cliente.',
+            proyectos: {
+                internacionales: [
+                    { titulo: 'Residencia Privada – Medellín · Bogotá Expo', desc: 'Diseño integral de vivienda unifamiliar con criterios LEED y ventilación natural. Premio Nacional de Arquitectura 2021.' },
+                    { titulo: 'Torre Oficinas – Panamá City', desc: 'Consultoría en fachada ventilada y sistemas bioclimáticos para edificio corporativo de 18 pisos.' }
+                ],
+                colombia: [
+                    { titulo: 'Conjunto Residencial La Bonga – Cartagena', desc: 'Diseño y dirección de obra de 40 unidades habitacionales con espacios comunes en zona costera.' },
+                    { titulo: 'Clínica Odontológica El Parque – Bogotá', desc: 'Remodelación funcional y estética de consultorio odontológico de 320 m².' }
+                ],
+                barranquilla: [
+                    { titulo: 'Remodelación Apto El Golf – El Golf', desc: 'Reforma integral de 140 m² con doble altura, iluminación LED y materiales importados.' },
+                    { titulo: 'Casa Campestre Puerto Colombia', desc: 'Ampliación y remodelación de vivienda unifamiliar con piscina y zona BBQ.' }
+                ]
+            },
+            habilidades: ['Diseño Bioclimático', 'AutoCAD', 'Revit BIM', 'SketchUp', 'Gestión de Obra', 'Presupuesto', 'Sostenibilidad', 'Dirección Técnica']
+        },
+        1: {
+            nombre: 'Elena Gómez',
+            especialidad: 'Interiorista',
+            rol: 'Especialista en Acabados de Lujo y Optimización de Espacios',
+            experiencia: '8 años de experiencia',
+            imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=600',
+            descripcion: 'Elena es una interiorista apasionada por transformar espacios ordinarios en ambientes extraordinarios. Se especializa en la selección de materiales premium, paletas cromáticas sofisticadas y diseño funcional. Ha trabajado con familias y empresas de Barranquilla y otras ciudades colombianas, logrando proyectos que equilibran elegancia, confort y practicidad.',
+            proyectos: {
+                internacionales: [
+                    { titulo: 'Showroom de Moda – Miami, FL', desc: 'Diseño de interiores para tienda de moda de lujo en Brickell con estética minimalista y vitrinas personalizadas.' },
+                    { titulo: 'Penthouse – Punta Cana', desc: 'Decoración y selección de mobiliario para apartamento de lujo en complejo turístico del Caribe.' }
+                ],
+                colombia: [
+                    { titulo: 'Hotel Boutique Cartagena Amurallada', desc: 'Rediseño de 12 habitaciones y áreas comunes con elementos coloniales contemporáneos.' },
+                    { titulo: 'Oficinas Corporativas Medellín', desc: 'Diseño de espacios de trabajo colaborativo para empresa de tecnología con 200 empleados.' }
+                ],
+                barranquilla: [
+                    { titulo: 'Suite Master – Altos del Limón', desc: 'Diseño completo de habitación principal con walk-in closet, vestier y baño spa de 45 m².' },
+                    { titulo: 'Restaurante La Trattoria – Centro Histórico', desc: 'Concepto visual e interiorismo para restaurante italiano con capacidad de 80 personas.' }
+                ]
+            },
+            habilidades: ['Diseño de Interiores', 'Paletas Cromáticas', '3D Max', 'Adobe Photoshop', 'Gestión de Proveedores', 'Iluminación', 'Decoración', 'Project Management']
+        },
+        2: {
+            nombre: 'Ricardo Méndez',
+            especialidad: 'Maestro de Obra',
+            rol: 'Especialista en Acabados Finos, Mampostería y Redes Hidrosanitarias',
+            experiencia: '20 años de experiencia',
+            imagen: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600&h=600',
+            descripcion: 'Ricardo es un maestro de obra con dos décadas de experiencia en el sector de la construcción y remodelación. Su expertise abarca desde mampostería de precisión hasta instalaciones hidrosanitarias complejas. Es reconocido por su puntualidad, la calidad de sus acabados y su capacidad de liderar equipos multidisciplinarios con excelentes resultados.',
+            proyectos: {
+                internacionales: [
+                    { titulo: 'Remodelación Hotel Caribe – Cartagena (Cadena Internacional)', desc: 'Dirección de cuadrillas en remodelación de 60 habitaciones con estándares internacionales de cadena hotelera.' },
+                    { titulo: 'Obras Civiles – Zona Franca Barranquilla', desc: 'Participación en instalaciones industriales con requerimientos técnicos de exportación.' }
+                ],
+                colombia: [
+                    { titulo: 'Conjunto Residencial Poblado Verde – Medellín', desc: 'Construcción de redes hidrosanitarias y acabados de 120 apartamentos en 14 meses.' },
+                    { titulo: 'Centro Comercial La Plazuela – Montería', desc: 'Mampostería estructural y acabados de locales comerciales en 8.000 m².' }
+                ],
+                barranquilla: [
+                    { titulo: 'Remodelación Integral Edificio Rosales – Prado', desc: 'Refuerzo estructural, cambio de redes y acabados en edificio de 6 pisos del año 1970.' },
+                    { titulo: 'Cocinas y Baños – Ciudadela 20 de Julio', desc: 'Remodelación simultánea de 35 unidades residenciales con acabados de alta calidad.' }
+                ]
+            },
+            habilidades: ['Mampostería', 'Redes Hidrosanitarias', 'Acabados Finos', 'Drywall', 'Lectura de Planos', 'Supervisión de Obra', 'Concreto', 'Pintura Profesional']
+        },
+        3: {
+            nombre: 'Andrés Villa',
+            especialidad: 'Especialista en Domótica',
+            rol: 'Integrador de Sistemas Inteligentes, Seguridad y Automatización de Hogares',
+            experiencia: '6 años de experiencia',
+            imagen: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=600',
+            descripcion: 'Andrés es el referente en Barranquilla en materia de hogares inteligentes y automatización residencial. Diseña e instala sistemas integrados de iluminación, climatización, seguridad CCTV y control por voz o smartphone. Trabaja con marcas líderes como Lutron, Nest, Control4 y KNX, garantizando soluciones escalables y fáciles de usar para cada familia.',
+            proyectos: {
+                internacionales: [
+                    { titulo: 'Smart Home – Bogotá (Cliente internacional)', desc: 'Sistema KNX completo para vivienda de ejecutivo extranjero con control total desde app móvil.' },
+                    { titulo: 'Automatización Oficina – Miami', desc: 'Consultoría e instalación remota de sistema Lutron para iluminación inteligente en oficina corporativa.' }
+                ],
+                colombia: [
+                    { titulo: 'Proyecto Domótica Edificio Aqua – Cartagena', desc: 'Automatización de áreas comunes, acceso biométrico y CCTV para conjunto residencial de lujo.' },
+                    { titulo: 'Hogar Inteligente – Cabecera del Llano, Bucaramanga', desc: 'Sistema integral Control4 con 80 puntos de control, cine en casa y seguridad perimetral.' }
+                ],
+                barranquilla: [
+                    { titulo: 'Villa Smart – Country Club', desc: 'Instalación de sistema de climatización automática, persianas motorizadas y audio multizona.' },
+                    { titulo: 'Oficinas Inteligentes – Zona Norte', desc: 'Gestión energética inteligente y acceso controlado para empresa de 60 empleados.' }
+                ]
+            },
+            habilidades: ['Domótica KNX', 'Control4', 'Lutron', 'CCTV', 'Redes IP', 'Automatización', 'Seguridad Electrónica', 'App móvil']
+        }
+    };
+
+    /* ── CONTEXTO GLOBAL DE COTIZACIÓN ─────────────────── */
+    let contextoCotizacion = {
+        origen: null,           // "profesional" o "proyecto"
+        nombreProfesional: null,
+        especialidad: null,
+        tipoProyecto: null,
+        // internos para pasar datos al botón del perfil
+        _perfilNombre: null,
+        _perfilEspecialidad: null
+    };
+
+    /* ── OPCIONES DE SELECT DINÁMICO ────────────────────── */
+    const opcionesTipo = {
+        cocina: [
+            'Cocina integral',
+            'Remodelación parcial de cocina',
+            'Cambio de gabinetes',
+            'Iluminación y acabados'
+        ],
+        'baño': [
+            'Remodelación completa de baño',
+            'Cambio de sanitarios',
+            'Enchapes y cerámica',
+            'División de ducha'
+        ],
+        apartamento: [
+            'Remodelación integral',
+            'Remodelación por áreas',
+            'Diseño interior completo',
+            'Acabados generales'
+        ],
+        Arquitecto: [
+            'Diseño arquitectónico',
+            'Remodelación integral',
+            'Dirección de obra'
+        ],
+        Interiorista: [
+            'Diseño de interiores',
+            'Decoración',
+            'Optimización de espacios'
+        ],
+        'Maestro de Obra': [
+            'Ejecución de obra',
+            'Acabados',
+            'Remodelación estructural'
+        ],
+        'Maestro de obra': [
+            'Ejecución de obra',
+            'Acabados',
+            'Remodelación estructural'
+        ],
+        Domótica: [
+            'Automatización del hogar',
+            'Iluminación inteligente',
+            'Seguridad electrónica'
+        ]
+    };
+
+    function actualizarSelectTipo(clave) {
+        const sel = document.getElementById('f-tipo');
+        // Buscar la clave directamente, o la primera coincidencia parcial
+        let opciones = opcionesTipo[clave];
+        if (!opciones) {
+            // Buscar coincidencia parcial (ej: "Especialista en Domótica" → Domótica)
+            const encontrada = Object.keys(opcionesTipo).find(k =>
+                clave.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(clave.toLowerCase())
+            );
+            opciones = encontrada ? opcionesTipo[encontrada] : [];
+        }
+        sel.innerHTML = '<option value="">Selecciona...</option>' +
+            opciones.map(o => `<option>${o}</option>`).join('');
+    }
+
+    /* ── RESETEAR FORMULARIO ────────────────────────────── */
+    function resetearFormulario() {
+        document.getElementById('alerta-exito').style.display = 'none';
+        ['f-nombre','f-apellido','f-telefono','f-correo','f-presupuesto','f-desc'].forEach(id => {
+            const el = document.getElementById(id);
+            el.value = '';
+            el.style.borderColor = '#E2E8F0';
+        });
+        document.getElementById('f-tipo').style.borderColor = '#E2E8F0';
+    }
+
+    /* ── MOSTRAR VISTA COTIZACIÓN ────────────────────────── */
+    function _abrirCotizacion() {
+        resetearFormulario();
+        ocultarTodas();
+        document.getElementById('vista-cotizacion').classList.add('activa');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ── COTIZACIÓN DESDE PROFESIONAL ───────────────────── */
+    function mostrarCotizacionProfesional(nombre, especialidad) {
+        contextoCotizacion.origen           = 'profesional';
+        contextoCotizacion.nombreProfesional = nombre;
+        contextoCotizacion.especialidad      = especialidad;
+        contextoCotizacion.tipoProyecto      = null;
+
+        // Título dinámico
+        document.getElementById('cotizacion-titulo').textContent = 'Cotización con ' + nombre;
+        document.getElementById('cotizacion-subtitulo').textContent =
+            'Estás solicitando una cotización personalizada con ' + nombre + '. Completa el formulario y recibirás respuesta en menos de 24 horas.';
+
+        // Bloque de contexto
+        document.getElementById('f-contexto-bloque').style.display = 'block';
+        document.getElementById('f-contexto-profesional').style.display = 'block';
+        document.getElementById('f-contexto-proyecto').style.display = 'none';
+        document.getElementById('f-ctx-nombre').textContent = nombre;
+        document.getElementById('f-ctx-especialidad').textContent = especialidad;
+
+        // Select dinámico según especialidad
+        // Mapear especialidad a clave de opciones
+        let clave = especialidad;
+        if (especialidad.toLowerCase().includes('domotica') || especialidad.toLowerCase().includes('domótica')) clave = 'Domótica';
+        else if (especialidad.toLowerCase().includes('arquitecto') || especialidad.toLowerCase().includes('arquitectura')) clave = 'Arquitecto';
+        else if (especialidad.toLowerCase().includes('interiorista') || especialidad.toLowerCase().includes('interior')) clave = 'Interiorista';
+        else if (especialidad.toLowerCase().includes('maestro')) clave = 'Maestro de Obra';
+        actualizarSelectTipo(clave);
+
+        _abrirCotizacion();
+    }
+
+    /* ── COTIZACIÓN DESDE PROYECTO ──────────────────────── */
+    function mostrarCotizacionProyecto(tipo) {
+        contextoCotizacion.origen           = 'proyecto';
+        contextoCotizacion.tipoProyecto      = tipo;
+        contextoCotizacion.nombreProfesional = null;
+        contextoCotizacion.especialidad      = null;
+
+        const tipoCapital = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+
+        // Título dinámico
+        document.getElementById('cotizacion-titulo').textContent = 'Cotización para remodelación de ' + tipoCapital;
+        document.getElementById('cotizacion-subtitulo').textContent =
+            'Cuéntanos los detalles de tu proyecto de ' + tipo + ' y nuestros profesionales te enviarán propuestas en menos de 24 horas.';
+
+        // Bloque de contexto
+        document.getElementById('f-contexto-bloque').style.display = 'block';
+        document.getElementById('f-contexto-proyecto').style.display = 'block';
+        document.getElementById('f-contexto-profesional').style.display = 'none';
+        document.getElementById('f-ctx-tipo').textContent = tipoCapital;
+
+        // Select dinámico según tipo de proyecto
+        actualizarSelectTipo(tipo);
+
+        _abrirCotizacion();
+    }
+
+    /* ── NAVEGACIÓN SPA ─────────────────────────────────── */
+    function ocultarTodas() {
+        document.querySelectorAll('.vista').forEach(v => v.classList.remove('activa'));
+    }
+
+    function mostrarHome() {
+        ocultarTodas();
+        document.getElementById('vista-home').classList.add('activa');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function mostrarPerfil(id) {
+        const p = profesionales[id];
+        if (!p) return;
+
+        // Guardar datos del perfil en el contexto para el botón de cotizar
+        contextoCotizacion._perfilNombre       = p.nombre;
+        contextoCotizacion._perfilEspecialidad = p.especialidad;
+
+        // Llenar datos
+        document.getElementById('perfil-avatar').src = p.imagen;
+        document.getElementById('perfil-avatar').alt = p.nombre;
+        document.getElementById('perfil-especialidad-badge').textContent = p.especialidad;
+        document.getElementById('perfil-nombre').textContent = p.nombre;
+        document.getElementById('perfil-rol').textContent = p.rol;
+        document.getElementById('perfil-exp').textContent = '⏱ ' + p.experiencia;
+        document.getElementById('perfil-desc').textContent = p.descripcion;
+
+        // Proyectos
+        ['internacionales', 'colombia', 'barranquilla'].forEach(zona => {
+            const cont = document.getElementById('proyectos-' + zona);
+            cont.innerHTML = p.proyectos[zona].map(pr =>
+                `<div class="proyecto-item"><h4>${pr.titulo}</h4><p>${pr.desc}</p></div>`
+            ).join('');
+        });
+
+        // Reset tabs
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('activo'));
+        document.querySelectorAll('.tab-contenido').forEach(t => t.classList.remove('activo'));
+        document.querySelectorAll('.tab-btn')[0].classList.add('activo');
+        document.getElementById('tab-internacionales').classList.add('activo');
+
+        // Habilidades
+        const hab = document.getElementById('perfil-habilidades');
+        hab.innerHTML = p.habilidades.map(h => `<li>${h}</li>`).join('');
+
+        ocultarTodas();
+        document.getElementById('vista-perfil').classList.add('activa');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function cambiarTab(zona, btn) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('activo'));
+        document.querySelectorAll('.tab-contenido').forEach(t => t.classList.remove('activo'));
+        btn.classList.add('activo');
+        document.getElementById('tab-' + zona).classList.add('activo');
+    }
+
+    function enviarCotizacion() {
+        const campos = ['f-nombre', 'f-apellido', 'f-telefono', 'f-correo', 'f-tipo', 'f-presupuesto', 'f-desc'];
+        let valido = true;
+        campos.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el.value.trim()) {
+                el.style.borderColor = 'var(--vino-tinto)';
+                valido = false;
+            } else {
+                el.style.borderColor = '#E2E8F0';
+            }
+        });
+        if (!valido) return;
+
+        const alerta = document.getElementById('alerta-exito');
+        alerta.style.display = 'block';
+        alerta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* ── BOTONES "VER PERFIL" ───────────────────────────── */
+    document.addEventListener('DOMContentLoaded', () => {
+        // Asignar index a los botones "Ver Perfil"
+        const botonesVer = document.querySelectorAll('.btn-outline');
+        let proIdx = 0;
+        botonesVer.forEach(btn => {
+            if (btn.textContent.trim() === 'Ver Perfil') {
+                const idx = proIdx;
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    mostrarPerfil(idx);
+                });
+                proIdx++;
+            }
+        });
+
+        // Botón "Buscar Profesionales" → scroll a #profesionales
+        const btnBuscar = document.querySelector('.hero-btns .btn-outline');
+        if (btnBuscar && btnBuscar.textContent.trim() === 'Buscar Profesionales') {
+            btnBuscar.addEventListener('click', e => {
+                e.preventDefault();
+                document.getElementById('profesionales').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        // Logo → volver a home si estamos en otra vista
+        document.querySelector('.logo').style.cursor = 'pointer';
+        document.querySelector('.logo').addEventListener('click', () => mostrarHome());
+
+        // Nav links internos
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', e => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    mostrarHome();
+                    setTimeout(() => {
+                        const target = document.querySelector(href);
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
